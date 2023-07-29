@@ -85,7 +85,7 @@ app.post("/prediction",function(req,res){
 
 app.post("/weather",function(req,res){
     var cname=(req.body.cityname);  
-    const url="https://api.openweathermap.org/data/2.5/weather?q="+cname +"&appid=b5a1dbb3775fb14f3732d17381fd0ef1&units=metric"
+    const url="https://api.openweathermap.org/data/2.5/weather?q="+cname +"&appid="+process.env.WEATHER_API_KEY+"&units=metric"
     
     https.get(url,function(resp){
         resp.on("data",function(data){
