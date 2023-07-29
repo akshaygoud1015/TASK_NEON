@@ -84,8 +84,8 @@ app.post("/weather",function(req,res){
     https.get(url,function(resp){
         resp.on("data",function(data){
             const wdata=JSON.parse(data)
+            console.log(wdata)
             const tempp=wdata?.main?.temp
-            console.log(tempp);
             res.write("<h1>temp is "+tempp+" degree celsius</h1>")
            
             res.send()
