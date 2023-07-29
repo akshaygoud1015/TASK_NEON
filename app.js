@@ -32,23 +32,29 @@ app.get("/chatbot",function(req,res){
 })
 app.post("/chatbot",function(req,res){
 
-    const configuration = new Configuration({
-        apiKey: process.env.OPENAI_API_KEY,
-      });
-      const openai = new OpenAIApi(configuration);
-      
-      async function runCompletion () {
-      const completion = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: req.body.query,
-      });
-      var resp=(completion.data.choices[0].text);
-      res.write("BOT:"+resp+"\n"+"\n")
-      res.write("(characters are limited becuase additional token length requires premium API's)")
-      res.send()
-      }
-      
-      runCompletion();
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
+async function runCompletion() {
+  try {
+    const completion = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: req.body.query,
+    });
+    var resp = completion.data.choices[0].text;
+    res.write("BOT:" + resp + "\n" + "\n");
+    res.write("(characters are limited because additional token length requires premium API's)");
+    res.send();
+  } catch (error) {
+    console.error("Error:", error.message);
+    res.status(500).send("Something went wrong.");
+  }
+}
+
+runCompletion();
+
  
 })
 
