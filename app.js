@@ -84,13 +84,13 @@ app.post("/weather",function(req,res){
     https.get(url,function(resp){
         resp.on("data",function(data){
             const wdata=JSON.parse(data)
-            const temp=wdata.main.temp
+            const tempp=wdata.main.temp
             const tempf= wdata.weather[0].description
             const icon=wdata.weather[0].icon
             const ur="https://openweathermap.org/img/wn/"+ icon +"@2x.png"
 
-            console.log(temp);
-            res.write("<h1>temp is "+temp+" degree celsius</h1>")
+            console.log(tempp);
+            res.write("<h1>temp is "+tempp+" degree celsius</h1>")
             res.write("The sky looks like "+tempf)
             res.send()
 
