@@ -85,10 +85,9 @@ app.post("/weather",function(req,res){
         resp.on("data",function(data){
             const wdata=JSON.parse(data)
             const tempp=wdata?.main?.temp
-            const tempf= wdata?.weather[0]?.description
             console.log(tempp);
             res.write("<h1>temp is "+tempp+" degree celsius</h1>")
-            res.write("The sky looks like "+tempf)
+           
             res.send()
 
             
