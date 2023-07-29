@@ -84,7 +84,7 @@ app.post("/weather",function(req,res){
     https.get(url,function(resp){
         resp.on("data",function(data){
             const wdata=JSON.parse(data)
-            const tempp=wdata.main.temp
+            const tempp=wdata?.main?.temp
             const tempf= wdata.weather[0].description
             const icon=wdata.weather[0].icon
             const ur="https://openweathermap.org/img/wn/"+ icon +"@2x.png"
