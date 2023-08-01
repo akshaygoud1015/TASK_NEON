@@ -64,7 +64,7 @@ app.post("/prediction",function(req,res){
         user_input: cityname
       };
       
-      axios.post('https://01a2-49-205-122-13.ngrok-free.app/display',inputData , {
+      axios.post('https://7885-49-205-122-13.ngrok-free.app/display',inputData , {
         headers: {
           'Content-Type': 'application/json',
         }
